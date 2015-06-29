@@ -40,6 +40,8 @@ public class AhorcadoActivity extends Activity
 
     private ImageView imageView;
 
+    private int[] estadosAhorcado;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +69,16 @@ public class AhorcadoActivity extends Activity
         textView = (TextView) findViewById(R.id.textView);
 
         imageView = (ImageView) findViewById(R.id.imageView);
+
+        estadosAhorcado = new int[]{
+                R.drawable.ahorcado_0,
+                R.drawable.ahorcado_1,
+                R.drawable.ahorcado_2,
+                R.drawable.ahorcado_3,
+                R.drawable.ahorcado_4,
+                R.drawable.ahorcado_5,
+
+        };
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
