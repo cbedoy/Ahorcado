@@ -87,8 +87,10 @@ public class AhorcadoActivity extends Activity
         //Image View para mostrar los estados del ahorcado
         imageView = (ImageView) findViewById(R.id.imageView);
 
+        //Bandera opara finalizar el juego
         haFinalizadoElJuego = false;
 
+        //Vector para manejar las imagenes del ahorcado
         estadosAhorcado = new int[]{
                 R.drawable.ahorcado_0,
                 R.drawable.ahorcado_1,
@@ -105,15 +107,18 @@ public class AhorcadoActivity extends Activity
         intentos = 0;
 
 
+        //Se crea el adaptador para manejar mas facil y de manera personalizada la celda
         final LetraAdapter letraAdapter = new LetraAdapter(mLetras, getLayoutInflater());
 
 
+        //Se setea el adaptador
         gridView.setAdapter(letraAdapter);
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
             {
+                //Sio no esta el estado como previamente seleccionada progreigue
                 if(!mLetras.get(i).estado) {
                     //Validar si no se ha seleccionado esa letra
                     LetraEstado letraEstado = mLetras.get(i);
@@ -141,6 +146,7 @@ public class AhorcadoActivity extends Activity
             if (fraseParaAhorcado.charAt(i) == ' ')
                 fraseOculta+=' ';
             fraseOculta+="_";
+            //Llenamos la string con _ en donde tenga las letras, solo se hace una vez
         }
         Log.e("error", fraseOculta);
     }
@@ -179,6 +185,7 @@ public class AhorcadoActivity extends Activity
 
     private void mostrarElFinDeJuego() {
 
+        //Si se va a validar pero ya se te acabaron los intentos esto pasa
             if (intentos == maxIntentos) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this)
                         .setTitle("Has perdido")
@@ -187,6 +194,7 @@ public class AhorcadoActivity extends Activity
                         .setOnCancelListener(new DialogInterface.OnCancelListener() {
                             @Override
                             public void onCancel(DialogInterface dialog) {
+                                //Matamos esta activitydad y mostramos la anteiror
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(intent);
                                 finish();
@@ -201,6 +209,7 @@ public class AhorcadoActivity extends Activity
                         .setOnCancelListener(new DialogInterface.OnCancelListener() {
                             @Override
                             public void onCancel(DialogInterface dialog) {
+                                //Matamos esta activitydad y mostramos la anteiror
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(intent);
                                 finish();
@@ -216,13 +225,13 @@ public class AhorcadoActivity extends Activity
         Toast.makeText(getApplicationContext(), "Upps! te has equivocado", Toast.LENGTH_SHORT).show();
         intentos++;
 
-        //Cambiamos la imagen del ahorcado porque se equivoco
 
+//Verificamos si ya se termino el juego si lo es mostraremos el dialogo, si no actualizamos la imagen del ahorcado
         if(verificarSiYaTerminoElJuego()) {
             mostrarElFinDeJuego();
         }
         else {
-
+            //Cambiamos la imagen del ahorcado porque se equivoco
             imageView.setImageResource(estadosAhorcado[intentos]);
 
         }
@@ -233,9 +242,11 @@ public class AhorcadoActivity extends Activity
     private boolean verificarSiYaTerminoElJuego(){
         if(intentos == maxIntentos) {
             return true;
+            //Se acabaron los itentos
         }
         if(!fraseOculta.contains("_"))
             return true;
+        //Aun hay letra por descubriur
         return false;
     }
 }

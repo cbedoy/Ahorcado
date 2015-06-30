@@ -16,6 +16,7 @@ public class LetraAdapter extends BaseAdapter {
     private List<LetraEstado> listaLetrasEstados;
     private LayoutInflater layoutInflater;
 
+    //Adaptador para usar una vista custom para la grid view
     public LetraAdapter(List<LetraEstado> listaLetrasEstados, LayoutInflater layoutInflater){
         this.listaLetrasEstados = listaLetrasEstados;
         this.layoutInflater = layoutInflater;
