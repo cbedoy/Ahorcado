@@ -6,13 +6,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by Carlos Bedoy on 6/29/15.
- * <p/>
- * Mobile App Developer - Exchange Android
- * <p/>
- * Pademobile
- */
 public class Test
 {
 

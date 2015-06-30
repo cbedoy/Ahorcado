@@ -3,23 +3,29 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:src="@drawable/abc_ratingbar_full_material"
-        android:id="@+id/imageView" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:background="#512DA8"
+        android:textColor="#FAFAFA"
         android:text="Adivina que es"
         android:gravity="center"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:id="@+id/textView" />
 
+    <ImageView
+        android:background="#FAFAFA"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:src="@drawable/ahorcado_0"
+        android:id="@+id/imageView" />
+
     <GridView
+        android:numColumns="9"
+        android:background="#FAFAFA"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
